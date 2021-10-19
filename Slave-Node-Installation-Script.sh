@@ -1,4 +1,15 @@
 #!/bin/bash
+
+#Remember to => adduser jenkins before running this script.
+
+sudo mkdir /var/jenkins
+sudo chown -R jenkins:jenkins /var/jenkins
+cd /var/jenkins
+mkdir .ssh 
+#Replace with master ssh key
+echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCqipQmSQqTiRrvDA1TjNjupXlp2d/PD9oHhFGoYZrvFrqldzF4yKpDBssOV3vV4zn92O7a99Z6HAEjc8hGAe365eZKxnXUBuj2w/Ug0h8jhioa6Xxfe+Qbwp4wVY6gB1wx0nN+NwmcbqTKjIWwUVawmx/SBp6Z/+UMRLHBHiPwN1PfT+yXlF/kXpzpxRoQKhYQmx3eYuzCfAoKuzQu1kuW+5MVVJvuWFJKKHyG5oOo+y4n9MqKF7eepfMdgjYsiqadDyKAYY4aO6r5f9s/DfBhtoZb5+uf7xgOw626LSE/Ip4Cf5J4X0jgwTZ8CukYCtj+B1ws4e4lDbjoAEC6DdYMVAPvxM6AVklGEmVeSm5Z32zi1ZgGqHKCGTwyDMGd+pQM6f1bB4sPIdLDaYENvyvDSyKLd57F/Ybl93Sm/p38Wv1/cH5c5uqbTVnQC45qhBrZCy/rsgnK1GUDqEfjcLliktrIY/vO6wQ0Lvb1+Q+IQRsWl+pI0/OuqnNy/V64+AM= sys_start@sys" > .ssh/authorized_keys
+
+
 #       instalar docker**
 
 echo " "
