@@ -1,14 +1,19 @@
 #!/bin/bash
 
 #Remember to => adduser jenkins before running this script.
+#Run this script with sudo
 
 sudo mkdir /var/jenkins
-sudo chown -R jenkins:jenkins /var/jenkins
 cd /var/jenkins
-mkdir .ssh 
+
+sudo mkdir .ssh 
+sudo touch .ssh/authorized_keys
+sudo chmod 777 .ssh/authorized_keys
 #Replace with master ssh key
 echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCqipQmSQqTiRrvDA1TjNjupXlp2d/PD9oHhFGoYZrvFrqldzF4yKpDBssOV3vV4zn92O7a99Z6HAEjc8hGAe365eZKxnXUBuj2w/Ug0h8jhioa6Xxfe+Qbwp4wVY6gB1wx0nN+NwmcbqTKjIWwUVawmx/SBp6Z/+UMRLHBHiPwN1PfT+yXlF/kXpzpxRoQKhYQmx3eYuzCfAoKuzQu1kuW+5MVVJvuWFJKKHyG5oOo+y4n9MqKF7eepfMdgjYsiqadDyKAYY4aO6r5f9s/DfBhtoZb5+uf7xgOw626LSE/Ip4Cf5J4X0jgwTZ8CukYCtj+B1ws4e4lDbjoAEC6DdYMVAPvxM6AVklGEmVeSm5Z32zi1ZgGqHKCGTwyDMGd+pQM6f1bB4sPIdLDaYENvyvDSyKLd57F/Ybl93Sm/p38Wv1/cH5c5uqbTVnQC45qhBrZCy/rsgnK1GUDqEfjcLliktrIY/vO6wQ0Lvb1+Q+IQRsWl+pI0/OuqnNy/V64+AM= sys_start@sys" > .ssh/authorized_keys
 
+sudo chown -R jenkins:jenkins /var/jenkins
+chmod -R  777  /var/jenkins/
 
 #       instalar docker**
 
@@ -30,6 +35,28 @@ sudo apt-get install -y \
     gnupg -y\
     lsb-release -y &&\
 sudo apt-get install docker.io -y
+
+#       Instalar java** 
+
+echo "                                                          "
+echo "                                                          "
+echo "         ____        ____    ____      ____        ____   "
+echo "        |    |  ____|\   \  |    |    |    |  ____|\   \  "
+echo "        |    | /    /\    \ |    |    |    | /    /\    \ "
+echo "        |    ||    |  |    ||    |    |    ||    |  |    |"
+echo "  ____  |    ||    |__|    ||    |    |    ||    |__|    |"
+echo " |    | |    ||    .--.    ||    |    |    ||    .--.    |"
+echo " |    | |    ||    |  |    ||\    \  /    /||    |  |    |"
+echo " |\____\|____||____|  |____|| \ ___\/___ / ||____|  |____|"
+echo " | |    |    ||    |  |    | \ |   ||   | / |    |  |    |"
+echo "  \|____|____||____|  |____|  \|___||___|/  |____|  |____|"
+echo "     \(   )/    \(      )/      \(    )/      \(      )/  "
+echo "      '   '      '      '        '    '        '      '   "
+echo "  "
+echo "  "
+
+sudo apt update &&\
+sudo apt install openjdk-11-jdk -y
 
 #       Jenkins should be running on localhost:8080
 
@@ -142,3 +169,12 @@ php -r "if (hash_file('sha384', 'composer-setup.php') === '906a84df04cea2aa72f40
 php composer-setup.php
 php -r "unlink('composer-setup.php');"
 sudo mv composer.phar /usr/local/bin/composer
+
+echo ""
+echo ""
+hostname -I
+echo ""
+echo ""
+echo " USERNAME : jenkins "
+echo " PASSWD : (jenkins-USER-PASSWD) "
+
